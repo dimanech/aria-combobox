@@ -188,7 +188,7 @@ export default class Combobox {
 
 	updateListbox() {
 		if ((this.lastSearchedTerm === this.input.value)
-				|| (this.input.value.length < this.minChars)) {
+			|| (this.input.value.length < this.minChars)) {
 			return;
 		}
 

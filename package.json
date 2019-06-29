@@ -1,6 +1,6 @@
 {
   "name": "aria-combobox",
-  "version": "1.0.1",
+  "version": "0.0.1",
   "description": "WAI ARIA AAA compatible combobox",
   "main": "Combobox.js",
   "scripts": {

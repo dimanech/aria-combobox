@@ -1,0 +1,19 @@
+{
+  "name": "aria-combobox",
+  "version": "1.0.1",
+  "description": "WAI ARIA AAA compatible combobox",
+  "main": "Combobox.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dimanech/aria-combobox.git"
+  },
+  "author": "Nechepurenko D.",
+  "devDependencies": {
+    "eslint": "^6.0.1",
+    "stylelint": "^10.1.0"
+  }
+}

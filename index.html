@@ -1,0 +1,137 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="suggestions.css">
+</head>
+<body>
+	<header style="display: flex; justify-content: center; background-color: lightgreen; padding: 20px; ">
+		<form
+			role="search"
+			class="b-header_search"
+			action=""
+			method="get"
+			id="simple-search-form"
+			name="simpleSearch">
+			<div
+				class="b-header_search-input"
+				data-js-search-combobox
+			>
+				<!-- by ARIA specs element above should be combobox, but most screen readers not announce it, so
+					we move combobox to input -->
+				<input
+					id="header-search-input"
+					type="search"
+					name="q"
+					value=""
+					autocomplete="off"
+					spellcheck="false"
+					autocapitalize="off"
+					autocorrect="false"
+					required="required"
+					placeholder="What are you looking for?"
+					
+					role="combobox"
+					aria-expanded="false"
+					aria-owns="search-results-listbox"
+					aria-haspopup="listbox"
+					
+					aria-autocomplete="list"
+					aria-controls="search-results-listbox"
+					aria-activedescendant=""
+					aria-label="Search"
+				/>
+				<button
+					type="submit"
+					name="search-button"
+					class="b-header_search-btn_search"
+					tabindex="-1"
+					aria-hidden="true"
+					aria-label="Submit search keywords"
+				>
+					Search
+				</button>
+			</div>
+			<div
+				role="listbox"
+				aria-labelledby="header-search-input"
+				id="search-results-listbox"
+				class="b-header_search-suggestions"
+				data-url="./suggestions-search.html">
+			</div>
+		</form>
+		<div class="b-header_suggestions_flyout_pane" data-js-suggestions-overlay></div>
+	</header>
+	<script type="module">
+		import SearchCombo from './SearchCombobox.js';
+		
+		const comboBoxElement = document.querySelector('[data-js-search-combobox]');
+		
+		if (comboBoxElement) {
+			const searchComboHeader = new SearchCombo(comboBoxElement);
+			searchComboHeader.init();
+			
+			// prevent form submition if suggest selects by enter key
+			document.getElementById('simple-search-form').addEventListener('submit', (event) => {
+				const activeDescendant = event.target.querySelector('#header-search-input')
+					.getAttribute('aria-activedescendant');
+				
+				if (activeDescendant !== '') {
+					event.preventDefault();
+				}
+			});
+		}
+	</script>
+	
+	
+	
+	
+	
+	<form action="">
+		<div data-js-addresses-combobox>
+			<input
+				id="addresses-input"
+				type="text"
+				name="addresses"
+				value=""
+				placeholder="Address"
+				
+				role="combobox"
+				aria-expanded="false"
+				aria-owns="addresses-listbox"
+				aria-haspopup="listbox"
+				
+				aria-autocomplete="list"
+				aria-controls="addresses-listbox"
+				aria-activedescendant=""
+				aria-label="Address"
+			/>
+		</div>
+		<div
+			role="listbox"
+			aria-labelledby="addresses-input"
+			id="addresses-listbox"
+			class="b-header_search-suggestions"
+			data-url="./suggestions-addresses.html">
+		</div>
+		
+		<button type="submit">Submit</button>
+	</form>
+	<script type="module">
+		import AddressCombobox from './AddressCombobox.js';
+		
+		const comboBoxElement = document.querySelector('[data-js-addresses-combobox]');
+		
+		if (comboBoxElement) {
+			const addressCombobox = new AddressCombobox(comboBoxElement);
+			addressCombobox.init();
+		}
+	</script>
+	
+	
+	
+	
+</body>
+</html>

@@ -1,10 +1,18 @@
 export default class Combobox {
 	/*
-	 * This content is based on w3.org design pattern examples and licensed according to the
-	 * W3C Software License at
-	 * https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+	 * Combobox
+	 *
 	 * Please see specification:
 	 * https://www.w3.org/TR/wai-aria-practices/#combobox
+	 *
+	 * This software or document includes material copied from or derived from
+	 * https://www.w3.org/TR/wai-aria-practices/examples/combobox/aria1.1pattern/listbox-combo.html.
+	 * Copyright ©2019 W3C® (MIT, ERCIM, Keio, Beihang).
+	 * All Rights Reserved. This work is distributed under the
+	 * W3C® Software License http://www.w3.org/Consortium/Legal/copyright-software
+	 * in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+	 * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+	 * PARTICULAR PURPOSE.
 	 */
 	constructor(comboboxNode) {
 		this.combobox = comboboxNode;
@@ -33,7 +41,13 @@ export default class Combobox {
 			DOWN: 40,
 			BACKSPACE: 8,
 		});
+	}
 
+	init() {
+		this.initEventListeners();
+	}
+
+	initEventListeners() {
 		this.handleOuterClick = this.handleOuterClick.bind(this);
 		this.handleKeydown = this.handleKeydown.bind(this);
 		this.handleFocus = this.handleFocus.bind(this);
@@ -42,13 +56,7 @@ export default class Combobox {
 		this.handleInput = this.handleInput.bind(this);
 		this.handleMouseenter = this.handleMouseenter.bind(this);
 		this.handleMouseleave = this.handleMouseleave.bind(this);
-	}
 
-	init() {
-		this.initEventListeners();
-	}
-
-	initEventListeners() {
 		document.body.addEventListener('click', this.handleOuterClick);
 		this.input.addEventListener('keydown', this.handleKeydown);
 		this.input.addEventListener('focus', this.handleFocus);

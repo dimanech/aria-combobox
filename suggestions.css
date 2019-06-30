@@ -1,9 +1,12 @@
 .b-header_search-input {
 	display: flex;
+	position: relative;
+	z-index: 2;
 }
 
 .b-header_search-suggestions {
 	position: relative;
+	z-index: 2;
 }
 
 .b-suggestions {
@@ -63,7 +66,12 @@
 	position: absolute;
 	left: 0;
 	right: 0;
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.9);
+	z-index: 1;
+}
+
+:focus {
+	outline: 4px solid red;
 }
 
 .m-focused {
